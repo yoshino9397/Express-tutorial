@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/yoshino9397/express-tutorial/issues"
   },
-  "homepage": "https://github.com/yoshino9397/express-tutorial#readme"
+  "homepage": "https://github.com/yoshino9397/express-tutorial#readme",
+  "dependencies": {
+    "express": "^4.17.2"
+  }
 }
