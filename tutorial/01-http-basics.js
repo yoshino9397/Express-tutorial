@@ -23,5 +23,5 @@ app.all("*", (req, res) => {
   res.status(404).send("<h1>resource not found</h1>");
 });
 
-//setup static and middleware
+
 app.use(express.static('./public'))
