@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 let { people } = require("./data");
 
+//parse json
+app.use(express.json());
 app.get("/api/people", (req, res) => {
   res.status(200).json({ success: true, data: people });
 });
@@ -10,6 +12,26 @@ app.get("/api/people", (req, res) => {
 app.use(express.static("./method-public"));
 //parse from data
 app.use(express.urlencoded({ extended: false }));
+
+app.post("/api/people", (req, res) => {
+  const { name } = req.body;
+  if (!name) {
+    return res
+      .status(400)
+      .json({ success: false, msg: "Plz provide name value" });
+  }
+  res.status(201).json({ success: true, person: name });
+});
+
+app.post("/api/postman/people", (req, res) => {
+  const { name } = req.body;
+  if (!name) {
+    return res
+      .status(400)
+      .json({ success: false, msg: "Plz provide name value" });
+  }
+  res.status(201).json({ success: true, data: [...people, name] });
+});
 
 app.post("/login", (req, res) => {
   const { name } = req.body;
